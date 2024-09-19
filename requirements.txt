@@ -11,7 +11,7 @@ altair
 mlflow
 pandas
 scikit-learn
-pmdarima
+pmdarima==1.8.1  
 matplotlib
 evidently
 statsmodels
