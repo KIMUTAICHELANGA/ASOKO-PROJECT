@@ -1,0 +1,16 @@
+artifact_uri: file:///C:/Users/brian%20kimu/Downloads/sample2/mlruns/861791445289659030/2ae839f9542b4a3f8b043e2179dcfe53/artifacts
+deleted_time: 1726743612715
+end_time: 1726742317419
+entry_point_name: ''
+experiment_id: '861791445289659030'
+lifecycle_stage: deleted
+run_id: 2ae839f9542b4a3f8b043e2179dcfe53
+run_name: shivering-tern-687
+run_uuid: 2ae839f9542b4a3f8b043e2179dcfe53
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1726742317308
+status: 3
+tags: []
+user_id: brian kimu

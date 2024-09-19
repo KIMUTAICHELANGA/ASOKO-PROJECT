@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/251653810889610149/4bb10b7641984b05b171641bf9210058/artifacts
+end_time: 1726743787709
+entry_point_name: ''
+experiment_id: '251653810889610149'
+lifecycle_stage: active
+run_id: 4bb10b7641984b05b171641bf9210058
+run_name: thoughtful-croc-787
+run_uuid: 4bb10b7641984b05b171641bf9210058
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1726743782797
+status: 3
+tags: []
+user_id: brian kimu

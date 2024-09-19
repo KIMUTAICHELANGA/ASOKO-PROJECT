@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/Users/brian%20kimu/Downloads/sample2/mlruns/0/542aba4b3a4f4773aa7599a98d642f8f/artifacts
+end_time: 1726743320163
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 542aba4b3a4f4773aa7599a98d642f8f
+run_name: likeable-lamb-562
+run_uuid: 542aba4b3a4f4773aa7599a98d642f8f
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1726743319851
+status: 3
+tags: []
+user_id: brian kimu

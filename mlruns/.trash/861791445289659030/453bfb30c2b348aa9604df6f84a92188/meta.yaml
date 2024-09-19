@@ -1,0 +1,16 @@
+artifact_uri: file:///C:/Users/brian%20kimu/Downloads/sample2/mlruns/861791445289659030/453bfb30c2b348aa9604df6f84a92188/artifacts
+deleted_time: 1726743612715
+end_time: 1726742317158
+entry_point_name: ''
+experiment_id: '861791445289659030'
+lifecycle_stage: deleted
+run_id: 453bfb30c2b348aa9604df6f84a92188
+run_name: skittish-slug-536
+run_uuid: 453bfb30c2b348aa9604df6f84a92188
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1726742317032
+status: 3
+tags: []
+user_id: brian kimu

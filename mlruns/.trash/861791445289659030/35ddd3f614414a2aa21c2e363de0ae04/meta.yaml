@@ -1,0 +1,16 @@
+artifact_uri: file:///C:/Users/brian%20kimu/Downloads/sample2/mlruns/861791445289659030/35ddd3f614414a2aa21c2e363de0ae04/artifacts
+deleted_time: 1726743612715
+end_time: 1726742247940
+entry_point_name: ''
+experiment_id: '861791445289659030'
+lifecycle_stage: deleted
+run_id: 35ddd3f614414a2aa21c2e363de0ae04
+run_name: auspicious-swan-423
+run_uuid: 35ddd3f614414a2aa21c2e363de0ae04
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1726742247808
+status: 3
+tags: []
+user_id: brian kimu

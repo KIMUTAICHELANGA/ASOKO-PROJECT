@@ -3,6 +3,8 @@ import mlflow
 import pandas as pd
 import matplotlib.pyplot as plt
 import plotly.express as px
+import pickle
+import os
 
 # Set up MLflow tracking URI to point to the local UI
 mlflow.set_tracking_uri("http://127.0.0.1:5000")
@@ -26,11 +28,24 @@ except Exception as e:
     st.error(f"Error fetching experiments: {e}")
     experiment_df = pd.DataFrame(columns=["Experiment ID", "Name"])
 
-if not experiment_df.empty:
-    # Display experiment details for selection
-    selected_experiment_id = st.selectbox("Select an Experiment", experiment_df["Experiment ID"])
+# Sidebar options
+st.sidebar.title("Options")
+compare_algorithms = st.sidebar.checkbox("Compare Algorithms")
+selected_algorithms = []
 
-    if selected_experiment_id:
+if compare_algorithms:
+    algorithms = ['Linear Regression', 'Gradient Boosting', 'ARIMA']
+    selected_algorithms = st.sidebar.multiselect("Select Algorithms", algorithms)
+    submit_button = st.sidebar.button("Submit")
+    
+if not experiment_df.empty:
+    # Display experiment names for selection
+    selected_experiment_name = st.selectbox("Select an Experiment", experiment_df["Name"])
+
+    if selected_experiment_name:
+        # Get the experiment ID for the selected name
+        selected_experiment_id = experiment_df[experiment_df["Name"] == selected_experiment_name]["Experiment ID"].values[0]
+
         # Fetch runs for the selected experiment
         try:
             runs = client.search_runs(experiment_ids=[selected_experiment_id])
@@ -54,7 +69,7 @@ if not experiment_df.empty:
                 st.write(run_df['Params'].apply(pd.Series))
 
                 # Extract metrics into a DataFrame
-                metrics = pd.json_normalize(run_df['Metrics']).dropna()
+                metrics = pd.json_normalize(run_df['Metrics'].dropna())
                 metrics['Start Time'] = run_df['Start Time']
 
                 # Check available columns
@@ -97,24 +112,24 @@ if not experiment_df.empty:
                     st.pyplot(fig)
 
                 # Algorithm Comparison
-                algorithm_col_exists = any('algorithm' in params for params in run_df['Params'])
-                if algorithm_col_exists:
-                    algorithms = ['Linear Regression', 'Gradient Boosting', 'ARIMA']
-                    comparison_df = pd.DataFrame()
-                    for algo in algorithms:
-                        algo_df = metrics[metrics['algorithm'] == algo]
-                        algo_df['Algorithm'] = algo
-                        comparison_df = pd.concat([comparison_df, algo_df], ignore_index=True)
-                    
-                    if not comparison_df.empty:
-                        comparison_summary = comparison_df.groupby('Algorithm').mean().reset_index()
-                        st.dataframe(comparison_summary)
+                if compare_algorithms and submit_button:
+                    if selected_algorithms:
+                        comparison_df = pd.DataFrame()
+                        for algo in selected_algorithms:
+                            algo_df = metrics[metrics['algorithm'] == algo]
+                            algo_df['Algorithm'] = algo
+                            comparison_df = pd.concat([comparison_df, algo_df], ignore_index=True)
 
-                        # Line chart for algorithm performance
-                        fig = px.line(comparison_summary, x='Algorithm', y='accuracy', title='Algorithm Performance')
-                        st.plotly_chart(fig)
-                else:
-                    st.warning("No algorithm information available for comparison.")
+                        if not comparison_df.empty:
+                            comparison_summary = comparison_df.groupby('Algorithm').mean().reset_index()
+                            st.write("### Algorithm Comparison")
+                            st.dataframe(comparison_summary)
+
+                            # Line chart for algorithm performance
+                            fig = px.line(comparison_summary, x='Algorithm', y='accuracy', title='Algorithm Performance')
+                            st.plotly_chart(fig)
+                    else:
+                        st.warning("Please select at least one algorithm to compare.")
 
                 # Example of tracking data drift
                 if 'feature' in metrics.columns and 'value' in metrics.columns:

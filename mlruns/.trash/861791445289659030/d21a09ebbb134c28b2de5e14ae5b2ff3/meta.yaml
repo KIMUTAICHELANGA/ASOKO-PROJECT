@@ -1,0 +1,16 @@
+artifact_uri: file:///C:/Users/brian%20kimu/Downloads/sample2/mlruns/861791445289659030/d21a09ebbb134c28b2de5e14ae5b2ff3/artifacts
+deleted_time: 1726743612715
+end_time: 1726742106410
+entry_point_name: ''
+experiment_id: '861791445289659030'
+lifecycle_stage: deleted
+run_id: d21a09ebbb134c28b2de5e14ae5b2ff3
+run_name: vaunted-smelt-645
+run_uuid: d21a09ebbb134c28b2de5e14ae5b2ff3
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1726742106224
+status: 4
+tags: []
+user_id: brian kimu

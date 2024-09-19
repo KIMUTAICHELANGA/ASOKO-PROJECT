@@ -5,7 +5,7 @@ import seaborn as sns
 import matplotlib.pyplot as plt
 import os
 
-# Helper function to get available datasets
+# Helper function to load data
 def load_data(file_path):
     return pd.read_csv(file_path)
 
@@ -65,3 +65,34 @@ if st.sidebar.button('Submit'):
         plt.title(f"Distribution of {selected_feature} across Datasets")
         plt.legend()
         st.pyplot(fig)
+
+# Main page content displaying baseline features
+st.title("Baseline Features for Deal-Making")
+
+# Load the dataset to display features
+baseline_file_path = os.path.join(data_folder, 'africa_deal_data.csv')
+if os.path.exists(baseline_file_path):
+    baseline_data = load_data(baseline_file_path)
+else:
+    st.error("Baseline dataset 'africa_deal_data.csv' not found in the 'data' folder.")
+
+# Display a brief description of the baseline features
+st.subheader("Baseline Features and Target Variable")
+st.write("""
+The dataset `africa_deal_data.csv` includes the following baseline features used to predict deal value:
+
+- **Political Stability**: Measures the stability of a country's political environment.
+- **Economic Environment**: Represents the economic conditions within a country.
+- **Regulatory Framework**: Indicates the regulatory environment affecting businesses.
+- **Infrastructure**: Reflects the quality and extent of a country's infrastructure.
+- **Human Capital**: Measures the skills and abilities of the workforce.
+
+The target variable is:
+- **Deal Value (USD Millions)**: The monetary value of the deals.
+
+These features are selected as they are crucial for understanding the investment climate and making accurate predictions about deal values in different countries.
+""")
+
+# Optionally display a sample of the baseline dataset
+st.subheader("Sample Data from `africa_deal_data.csv`")
+st.dataframe(baseline_data.head())

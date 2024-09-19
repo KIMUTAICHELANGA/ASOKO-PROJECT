@@ -2,9 +2,6 @@ import streamlit as st
 import pandas as pd
 import json
 from PIL import Image
-import mlflow
-import mlflow.sklearn
-import mlflow.pyfunc
 from sklearn.linear_model import LinearRegression
 from sklearn.ensemble import GradientBoostingRegressor
 from statsmodels.tsa.arima.model import ARIMA
@@ -15,6 +12,7 @@ import matplotlib.pyplot as plt
 from statsmodels.graphics.tsaplots import plot_acf, plot_pacf
 import pickle
 import os
+
 # Page configuration
 APP_TITLE = 'African Market Size Dashboard'
 APP_SUB_TITLE = 'Source: African Market Data'
@@ -61,14 +59,6 @@ def load_and_predict(X_test, y_test):
         lin_reg_r2, gbr_r2, arima_r2,
         lin_reg_mae, gbr_mae, arima_mae
     )
-
-# Shared MLflow Logging Function
-def log_to_mlflow(algorithm_results):
-    with mlflow.start_run():
-        for index, row in algorithm_results.iterrows():
-            mlflow.log_param(f"Algorithm_{row['Rank']}", row['Algorithm'])
-            mlflow.log_metric(f"R²_{row['Rank']}", float(row['R² Score']))
-            mlflow.log_metric(f"MAE_{row['Rank']}", float(row['Mean Absolute Error']))
 
 # Display Filters and Year Selector
 def display_filters():
@@ -120,9 +110,6 @@ def display_algorithm_performance(lin_reg_r2, gbr_r2, arima_r2, lin_reg_mae, gbr
     results_df = pd.DataFrame(algorithm_results)
     st.write("## Algorithm Performance Ranking")
     st.dataframe(results_df)
-
-    # Log results into MLflow
-    log_to_mlflow(results_df)
 
     # Display notice about prediction algorithm
     st.write("**Note:** The prediction is based on the rank 1 algorithm.")
@@ -190,7 +177,6 @@ def sidebar_data_sources():
         st.sidebar.dataframe(preview_data)
     except Exception as e:
         st.sidebar.write(f"Error loading file: {e}")
-
 
 # Main function to run the app
 def main():

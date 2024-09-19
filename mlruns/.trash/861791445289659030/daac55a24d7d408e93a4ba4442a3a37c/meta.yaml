@@ -1,0 +1,16 @@
+artifact_uri: file:///C:/Users/brian%20kimu/Downloads/sample2/mlruns/861791445289659030/daac55a24d7d408e93a4ba4442a3a37c/artifacts
+deleted_time: 1726743612715
+end_time: 1726741997433
+entry_point_name: ''
+experiment_id: '861791445289659030'
+lifecycle_stage: deleted
+run_id: daac55a24d7d408e93a4ba4442a3a37c
+run_name: honorable-bug-661
+run_uuid: daac55a24d7d408e93a4ba4442a3a37c
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1726741997210
+status: 4
+tags: []
+user_id: brian kimu

@@ -1,0 +1,16 @@
+artifact_uri: file:///C:/Users/brian%20kimu/Downloads/sample2/mlruns/861791445289659030/82312c01c146436595b5c4dd0f1a1fc0/artifacts
+deleted_time: 1726743612715
+end_time: 1726742248041
+entry_point_name: ''
+experiment_id: '861791445289659030'
+lifecycle_stage: deleted
+run_id: 82312c01c146436595b5c4dd0f1a1fc0
+run_name: indecisive-crane-539
+run_uuid: 82312c01c146436595b5c4dd0f1a1fc0
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1726742247952
+status: 3
+tags: []
+user_id: brian kimu

@@ -1,0 +1,16 @@
+artifact_uri: file:///C:/Users/brian%20kimu/Downloads/sample2/mlruns/861791445289659030/072169082d97438e826d8b91f73abf41/artifacts
+deleted_time: 1726743612715
+end_time: 1726742248146
+entry_point_name: ''
+experiment_id: '861791445289659030'
+lifecycle_stage: deleted
+run_id: 072169082d97438e826d8b91f73abf41
+run_name: blushing-stork-910
+run_uuid: 072169082d97438e826d8b91f73abf41
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1726742248053
+status: 3
+tags: []
+user_id: brian kimu

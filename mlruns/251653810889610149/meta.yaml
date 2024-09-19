@@ -1,0 +1,6 @@
+artifact_location: mlflow-artifacts:/251653810889610149
+creation_time: 1726743782756
+experiment_id: '251653810889610149'
+last_update_time: 1726743782756
+lifecycle_stage: active
+name: Deal Volume Prediction - ARIMA

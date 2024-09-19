@@ -1,0 +1,16 @@
+artifact_uri: file:///C:/Users/brian%20kimu/Downloads/sample2/mlruns/861791445289659030/60777997f6354dd9a3f06897528d7acf/artifacts
+deleted_time: 1726743612715
+end_time: 1726742317295
+entry_point_name: ''
+experiment_id: '861791445289659030'
+lifecycle_stage: deleted
+run_id: 60777997f6354dd9a3f06897528d7acf
+run_name: painted-panda-340
+run_uuid: 60777997f6354dd9a3f06897528d7acf
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1726742317171
+status: 3
+tags: []
+user_id: brian kimu

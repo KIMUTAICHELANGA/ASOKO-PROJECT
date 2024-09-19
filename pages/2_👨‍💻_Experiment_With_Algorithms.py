@@ -4,8 +4,11 @@ import pandas as pd
 import pickle
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import r2_score
-from pmdarima import auto_arima  # For ARIMA
-from sklearn.neural_network import MLPRegressor  # Neural Network
+from pmdarima import auto_arima
+from sklearn.ensemble import GradientBoostingRegressor, RandomForestRegressor
+from sklearn.svm import SVR
+from sklearn.linear_model import LinearRegression
+from sklearn.neural_network import MLPRegressor
 import subprocess
 import os
 
@@ -22,12 +25,12 @@ def load_data():
 
 # Available models for regression and ARIMA for time series
 MODELS = {
-    "Linear Regression": "LinearRegression",
-    "Gradient Boosting": "GradientBoosting",
-    "ARIMA": "ARIMA",  # Special handling for ARIMA
-    "Neural Network": "NeuralNetwork",
-    "Random Forest": "RandomForest",
-    "Support Vector Regressor": "SVR"
+    "Linear Regression": LinearRegression,
+    "Gradient Boosting": GradientBoostingRegressor,
+    "ARIMA": auto_arima,  # Special handling for ARIMA
+    "Neural Network": MLPRegressor,
+    "Random Forest": RandomForestRegressor,
+    "Support Vector Regressor": SVR
 }
 
 # Function to open MLflow UI
@@ -55,7 +58,7 @@ def main():
     st.write("Dataset", df)
 
     # Select target column (deal volume)
-    target_column = 'Number'
+    target_column = 'Deal Value (USD Millions)'
 
     # Model selection
     model_options = list(MODELS.keys())
@@ -63,8 +66,8 @@ def main():
     if not model_choice:
         st.stop()
 
-    model_name = MODELS[model_choice]
-    model = load_model_from_file(model_name)
+    model_class = MODELS[model_choice]
+    model = load_model_from_file(model_choice)
 
     if model is None:
         st.warning(f"{model_choice} model is not yet available. Please check back later.")
@@ -79,7 +82,7 @@ def main():
         st.stop()
 
     if track_with_mlflow:
-        experiment_name = "Deal Volume Prediction"
+        experiment_name = f"Deal Volume Prediction - {model_choice}"
         if mlflow.get_experiment_by_name(experiment_name) is None:
             mlflow.create_experiment(experiment_name)
         mlflow.set_experiment(experiment_name)
@@ -98,9 +101,10 @@ def main():
         preds_train = model.predict_in_sample()
         preds_test = model.predict(n_periods=len(y_test))
     else:
-        model.fit(X_train, y_train)
-        preds_train = model.predict(X_train)
-        preds_test = model.predict(X_test)
+        model_instance = model()
+        model_instance.fit(X_train, y_train)
+        preds_train = model_instance.predict(X_train)
+        preds_test = model_instance.predict(X_test)
 
     # Model evaluation
     metric_train = r2_score(y_train, preds_train)
@@ -112,6 +116,22 @@ def main():
         mlflow.log_metric("r2_score_train", metric_train)
         mlflow.log_metric("r2_score_test", metric_test)
         mlflow.end_run()
+
+    # Display metrics comparison and predictions
+    st.write("### Predictions")
+    st.write(f"Training Predictions: {list(preds_train[:5])}")
+    st.write(f"Testing Predictions: {list(preds_test[:5])}")
+
+    # Additional Model Tracking and Display
+    if model_choice in ["Linear Regression", "Gradient Boosting", "Neural Network", "Random Forest", "Support Vector Regressor"]:
+        st.write("## Model Details")
+        st.write(f"Model Type: {model_choice}")
+
+        if hasattr(model_instance, 'feature_importances_'):
+            st.write("### Feature Importances")
+            importances = model_instance.feature_importances_
+            feature_importances = pd.DataFrame(importances, index=X.columns, columns=['Importance'])
+            st.bar_chart(feature_importances)
 
 # Sidebar for MLflow Tracking
 def sidebar_menu():
