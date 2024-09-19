@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/Users/brian%20kimu/Downloads/sample2/mlruns/0/223c298c94e64a3aacdee4d382b07015/artifacts
+end_time: 1726324729417
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 223c298c94e64a3aacdee4d382b07015
+run_name: entertaining-kit-926
+run_uuid: 223c298c94e64a3aacdee4d382b07015
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1726324729069
+status: 3
+tags: []
+user_id: brian kimu

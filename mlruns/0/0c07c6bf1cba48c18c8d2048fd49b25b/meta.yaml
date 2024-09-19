@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/Users/brian%20kimu/Downloads/sample2/mlruns/0/0c07c6bf1cba48c18c8d2048fd49b25b/artifacts
+end_time: 1726575469511
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 0c07c6bf1cba48c18c8d2048fd49b25b
+run_name: victorious-smelt-825
+run_uuid: 0c07c6bf1cba48c18c8d2048fd49b25b
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1726575469264
+status: 3
+tags: []
+user_id: brian kimu

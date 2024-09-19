@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/Users/brian%20kimu/Downloads/sample2/mlruns/0/fe742ea5714a429986edeb9aae3ecd04/artifacts
+end_time: 1726326082113
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: fe742ea5714a429986edeb9aae3ecd04
+run_name: sassy-yak-174
+run_uuid: fe742ea5714a429986edeb9aae3ecd04
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1726326081553
+status: 3
+tags: []
+user_id: brian kimu

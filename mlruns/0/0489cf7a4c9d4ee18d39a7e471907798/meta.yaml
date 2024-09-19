@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/Users/brian%20kimu/Downloads/sample2/mlruns/0/0489cf7a4c9d4ee18d39a7e471907798/artifacts
+end_time: 1726325881199
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 0489cf7a4c9d4ee18d39a7e471907798
+run_name: big-hare-166
+run_uuid: 0489cf7a4c9d4ee18d39a7e471907798
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1726325880760
+status: 3
+tags: []
+user_id: brian kimu

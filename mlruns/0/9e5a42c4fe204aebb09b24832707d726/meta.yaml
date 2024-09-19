@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/Users/brian%20kimu/Downloads/sample2/mlruns/0/9e5a42c4fe204aebb09b24832707d726/artifacts
+end_time: 1726263248140
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 9e5a42c4fe204aebb09b24832707d726
+run_name: rogue-colt-1
+run_uuid: 9e5a42c4fe204aebb09b24832707d726
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1726263247963
+status: 3
+tags: []
+user_id: brian kimu

@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/Users/brian%20kimu/Downloads/sample2/mlruns/0/5fe83419d5944c05b60947ef149f7b6f/artifacts
+end_time: 1726739862062
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 5fe83419d5944c05b60947ef149f7b6f
+run_name: sassy-midge-294
+run_uuid: 5fe83419d5944c05b60947ef149f7b6f
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1726739861854
+status: 3
+tags: []
+user_id: brian kimu

@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/Users/brian%20kimu/Downloads/sample2/mlruns/0/a2daeb52c8f746f1b3bfb4f708ac5f13/artifacts
+end_time: 1726258476475
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: a2daeb52c8f746f1b3bfb4f708ac5f13
+run_name: unruly-chimp-219
+run_uuid: a2daeb52c8f746f1b3bfb4f708ac5f13
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1726258476265
+status: 3
+tags: []
+user_id: brian kimu

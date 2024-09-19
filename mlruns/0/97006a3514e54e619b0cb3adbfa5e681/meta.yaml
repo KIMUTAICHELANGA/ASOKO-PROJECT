@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/Users/brian%20kimu/Downloads/sample2/mlruns/0/97006a3514e54e619b0cb3adbfa5e681/artifacts
+end_time: 1726326020728
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 97006a3514e54e619b0cb3adbfa5e681
+run_name: debonair-crab-99
+run_uuid: 97006a3514e54e619b0cb3adbfa5e681
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1726326020561
+status: 3
+tags: []
+user_id: brian kimu

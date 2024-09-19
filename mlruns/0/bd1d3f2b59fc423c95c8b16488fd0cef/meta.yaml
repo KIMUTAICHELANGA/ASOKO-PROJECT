@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/Users/brian%20kimu/Downloads/sample2/mlruns/0/bd1d3f2b59fc423c95c8b16488fd0cef/artifacts
+end_time: 1726326079232
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: bd1d3f2b59fc423c95c8b16488fd0cef
+run_name: salty-vole-265
+run_uuid: bd1d3f2b59fc423c95c8b16488fd0cef
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1726326078939
+status: 3
+tags: []
+user_id: brian kimu

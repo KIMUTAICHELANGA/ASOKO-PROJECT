@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/Users/brian%20kimu/Downloads/sample2/mlruns/0/d4dd54ac2484406786e1b8cef077df9f/artifacts
+end_time: 1726575458321
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: d4dd54ac2484406786e1b8cef077df9f
+run_name: big-flea-275
+run_uuid: d4dd54ac2484406786e1b8cef077df9f
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1726575458037
+status: 3
+tags: []
+user_id: brian kimu

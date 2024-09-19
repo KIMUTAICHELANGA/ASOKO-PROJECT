@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/Users/brian%20kimu/Downloads/sample2/mlruns/0/2b44d3740a22475a9c02f1ea34f2ef46/artifacts
+end_time: 1726576964228
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 2b44d3740a22475a9c02f1ea34f2ef46
+run_name: ambitious-mole-12
+run_uuid: 2b44d3740a22475a9c02f1ea34f2ef46
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1726576963949
+status: 3
+tags: []
+user_id: brian kimu

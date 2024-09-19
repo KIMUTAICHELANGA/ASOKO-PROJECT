@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/Users/brian%20kimu/Downloads/sample2/mlruns/0/745696e0dcc945e8973ea5e97d8daf02/artifacts
+end_time: 1726397359273
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 745696e0dcc945e8973ea5e97d8daf02
+run_name: skittish-cow-703
+run_uuid: 745696e0dcc945e8973ea5e97d8daf02
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1726397359121
+status: 3
+tags: []
+user_id: brian kimu

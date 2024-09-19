@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/Users/brian%20kimu/Downloads/sample2/mlruns/0/dbbdb91094d44522be759cfa67d4728b/artifacts
+end_time: 1726325052501
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: dbbdb91094d44522be759cfa67d4728b
+run_name: dapper-moth-450
+run_uuid: dbbdb91094d44522be759cfa67d4728b
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1726325052373
+status: 3
+tags: []
+user_id: brian kimu

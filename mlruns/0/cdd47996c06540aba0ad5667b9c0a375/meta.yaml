@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/Users/brian%20kimu/Downloads/sample2/mlruns/0/cdd47996c06540aba0ad5667b9c0a375/artifacts
+end_time: 1726263210592
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: cdd47996c06540aba0ad5667b9c0a375
+run_name: charming-stork-488
+run_uuid: cdd47996c06540aba0ad5667b9c0a375
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1726263210439
+status: 3
+tags: []
+user_id: brian kimu

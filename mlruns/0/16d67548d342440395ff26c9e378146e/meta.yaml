@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/Users/brian%20kimu/Downloads/sample2/mlruns/0/16d67548d342440395ff26c9e378146e/artifacts
+end_time: 1726575672809
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 16d67548d342440395ff26c9e378146e
+run_name: bemused-dog-440
+run_uuid: 16d67548d342440395ff26c9e378146e
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1726575672509
+status: 3
+tags: []
+user_id: brian kimu

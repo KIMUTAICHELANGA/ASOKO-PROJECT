@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/Users/brian%20kimu/Downloads/sample2/mlruns/0/3b69cee6a66c4ce2abddd538fe1a3ab5/artifacts
+end_time: 1726576244616
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 3b69cee6a66c4ce2abddd538fe1a3ab5
+run_name: likeable-crow-443
+run_uuid: 3b69cee6a66c4ce2abddd538fe1a3ab5
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1726576244252
+status: 3
+tags: []
+user_id: brian kimu

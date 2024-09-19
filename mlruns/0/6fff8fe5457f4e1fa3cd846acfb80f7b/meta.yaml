@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/Users/brian%20kimu/Downloads/sample2/mlruns/0/6fff8fe5457f4e1fa3cd846acfb80f7b/artifacts
+end_time: 1726736769603
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 6fff8fe5457f4e1fa3cd846acfb80f7b
+run_name: selective-elk-894
+run_uuid: 6fff8fe5457f4e1fa3cd846acfb80f7b
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1726736769453
+status: 3
+tags: []
+user_id: brian kimu

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Streamlit for TNView</title>
+    <style type="text/css">
+      html, body {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        width: 100%;
+        overflow: hidden; /* Hide scrollbar of the outer page */
+      }
+      #iframe-container {
+        height: 100%;
+        width: 100%;
+        border: none;
+      }
+      iframe {
+        border: none;
+        width: 100%;
+        height: 100%;
+        display: block;
+        overflow: hidden; /* Hide scrollbars within the iframe */
+      }
+    </style>
+  </head>
+  <body>
+    <div id="iframe-container">
+      <iframe
+        src="https://multipage-app.streamlit.app/~/+/"
+        frameborder="0"
+        marginheight="0"
+        marginwidth="0"
+        scrolling="auto"
+        allow="geolocation"
+      ></iframe>
+    </div>
+  </body>
+</html>

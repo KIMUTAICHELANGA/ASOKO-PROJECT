@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/Users/brian%20kimu/Downloads/sample2/mlruns/0/1936341fc32c449fb4a486645d985e97/artifacts
+end_time: 1726493775898
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 1936341fc32c449fb4a486645d985e97
+run_name: invincible-moose-563
+run_uuid: 1936341fc32c449fb4a486645d985e97
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1726493775615
+status: 3
+tags: []
+user_id: brian kimu

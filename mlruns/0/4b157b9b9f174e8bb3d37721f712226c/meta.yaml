@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/Users/brian%20kimu/Downloads/sample2/mlruns/0/4b157b9b9f174e8bb3d37721f712226c/artifacts
+end_time: 1726326021785
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 4b157b9b9f174e8bb3d37721f712226c
+run_name: dashing-shark-596
+run_uuid: 4b157b9b9f174e8bb3d37721f712226c
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1726326021505
+status: 3
+tags: []
+user_id: brian kimu

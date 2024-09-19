@@ -1,0 +1,16 @@
+artifact_uri: file:///C:/Users/brian%20kimu/Downloads/sample2/mlruns/187222321471839014/3c2967e348e64c5bafaafb467c113f69/artifacts
+deleted_time: 1726241150163
+end_time: 1726150298721
+entry_point_name: ''
+experiment_id: '187222321471839014'
+lifecycle_stage: deleted
+run_id: 3c2967e348e64c5bafaafb467c113f69
+run_name: able-horse-226
+run_uuid: 3c2967e348e64c5bafaafb467c113f69
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1726150298609
+status: 3
+tags: []
+user_id: brian kimu
