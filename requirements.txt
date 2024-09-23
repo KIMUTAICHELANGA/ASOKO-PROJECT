@@ -7,7 +7,7 @@ pandas
 scikit-learn
 pmdarima
 matplotlib
-evidently
+evidently==0.1.59
 statsmodels
 shap
 Pillow
