@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/595967495110910747/b2d5a40fe6cb458094a6d57418413589/artifacts
+end_time: 1727088556072
+entry_point_name: ''
+experiment_id: '595967495110910747'
+lifecycle_stage: active
+run_id: b2d5a40fe6cb458094a6d57418413589
+run_name: lyrical-frog-741
+run_uuid: b2d5a40fe6cb458094a6d57418413589
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1727088555832
+status: 3
+tags: []
+user_id: brian kimu

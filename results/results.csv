@@ -1,0 +1,4 @@
+Model,Mean Absolute Error (MAE),Mean Squared Error (MSE),Root Mean Squared Error (RMSE)
+Linear Regression,8.25,75.50,8.67
+ARIMA,12.50,150.00,12.25
+Gradient Boosting,9.10,82.30,9.07

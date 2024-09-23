@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/595967495110910747/5224e3decbe3417494cbc10f78111358/artifacts
+end_time: 1727091052120
+entry_point_name: ''
+experiment_id: '595967495110910747'
+lifecycle_stage: active
+run_id: 5224e3decbe3417494cbc10f78111358
+run_name: clean-owl-254
+run_uuid: 5224e3decbe3417494cbc10f78111358
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1727091052007
+status: 3
+tags: []
+user_id: brian kimu

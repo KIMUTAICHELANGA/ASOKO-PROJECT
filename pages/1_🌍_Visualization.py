@@ -46,19 +46,10 @@ st.markdown("""
   align-items: center;
 }
 
-[data-testid="stMetricDeltaIcon-Up"] {
-    position: relative;
-    left: 38%;
-    -webkit-transform: translateX(-50%);
-    -ms-transform: translateX(-50%);
-    transform: translateX(-50%);
-}
-
+[data-testid="stMetricDeltaIcon-Up"],
 [data-testid="stMetricDeltaIcon-Down"] {
     position: relative;
     left: 38%;
-    -webkit-transform: translateX(-50%);
-    -ms-transform: translateX(-50%);
     transform: translateX(-50%);
 }
 </style>
@@ -66,53 +57,56 @@ st.markdown("""
 
 #######################
 # Load data
-# List available CSV files in the "data" folder
 data_folder = 'data'
 csv_files = [file for file in os.listdir(data_folder) if file.endswith('.csv')]
 
-# Sidebar for selecting the data file
-with st.sidebar:
-    st.title('🏂 AFRICA DEAL MAKING DASHBOARD')
-    
-    selected_file = st.selectbox('Select a data source', csv_files)
-    
-    # Load the selected CSV file
-    df_reshaped = pd.read_csv(os.path.join(data_folder, selected_file))
-    
-    year_list = list(df_reshaped['Year'].unique())[::-1]
-    
-    selected_year = st.selectbox('Select a year', year_list)
-    df_selected_year = df_reshaped[df_reshaped['Year'] == selected_year]
-    df_selected_year_sorted = df_selected_year.sort_values(by="Deal Value (USD Millions)", ascending=False)
+# Load the first CSV file by default
+df_reshaped = pd.read_csv(os.path.join(data_folder, csv_files[0]))
 
-    color_theme_list = ['blues', 'greens', 'reds', 'rainbow', 'turbo', 'viridis']
-    selected_color_theme = st.selectbox('Select a color theme', color_theme_list)
+#######################
+# Sidebar for selecting color theme
+st.sidebar.header('Settings')
+color_theme_list = ['blues', 'greens', 'reds', 'rainbow', 'turbo', 'viridis']
+selected_color_theme = st.sidebar.selectbox('Select a color theme', color_theme_list)
+
+#######################
+# Dashboard Main Panel
+st.title('🏂 AFRICA DEAL MAKING DASHBOARD')
+
+# Dropdown to select a country
+country_list = df_reshaped['Country'].unique()
+selected_country = st.selectbox('Select a country', country_list)
+
+# Filter data based on selected country
+country_data = df_reshaped[df_reshaped['Country'] == selected_country]
+
+# Year filter
+year_list = list(df_reshaped['Year'].unique())[::-1]
+selected_year = st.selectbox('Select a year', year_list)
+
+# Filter data based on selected year
+country_data_year_filtered = country_data[country_data['Year'] == selected_year]
+
+if not country_data_year_filtered.empty:
+    country_value = country_data_year_filtered['Deal Making(USD)'].sum()
+    country_deals = country_data_year_filtered['GDP'].sum()  # Replace 'Number' with GDP
+else:
+    country_value = 0
+    country_deals = 0
+
+# Display results
+st.metric(label=f"{selected_country} (GDP: {country_deals})", 
+          value=f"${country_value} M")
 
 #######################
 # Plots
-
-# Heatmap function
-def make_heatmap(input_df, input_y, input_x, input_color, input_color_theme):
-    heatmap = alt.Chart(input_df).mark_rect().encode(
-            y=alt.Y(f'{input_y}:O', axis=alt.Axis(title="Year", titleFontSize=18, titlePadding=15, titleFontWeight=900, labelAngle=0)),
-            x=alt.X(f'{input_x}:O', axis=alt.Axis(title="", titleFontSize=18, titlePadding=15, titleFontWeight=900)),
-            color=alt.Color(f'{input_color}:Q',
-                             legend=None,
-                             scale=alt.Scale(scheme=input_color_theme)),
-            stroke=alt.value('black'),
-            strokeWidth=alt.value(0.25),
-        ).properties(width=900).configure_axis(
-        labelFontSize=12,
-        titleFontSize=12
-        ) 
-    return heatmap
 
 # Choropleth map function
 def make_choropleth(input_df, input_id, input_column, input_color_theme):
     choropleth = px.choropleth(input_df, locations=input_id, color=input_column,
                                color_continuous_scale=input_color_theme,
                                scope="africa",
-                               labels={'Deal Value (USD Millions)': 'Deal Value (USD Millions)'}
+                               labels={'Deal Making(USD)': 'Deal Making(USD)'}
                               )
     choropleth.update_layout(
         template='plotly_dark',
@@ -123,40 +117,34 @@ def make_choropleth(input_df, input_id, input_column, input_color_theme):
     )
     return choropleth
 
-#######################
-# Dashboard Main Panel
-col = st.columns((1.5, 4.5, 2), gap='medium')
-
-with col[0]:
-    st.markdown('#### Top Deal Makers')
-
-    # Dropdown to select a country
-    country_list = df_selected_year['Country'].unique()
-    selected_country = st.selectbox('Select a country', country_list)
-    
-    # Filter data based on selected country
-    country_data = df_selected_year[df_selected_year['Country'] == selected_country]
-    if not country_data.empty:
-        country_value = country_data['Deal Value (USD Millions)'].sum()
-        country_deals = country_data['Number'].sum()
-    else:
-        country_value = 0
-        country_deals = 0
-    
-    st.metric(label=f"{selected_country} (Deals: {country_deals})", 
-              value=f"${country_value} M")
-
-with col[1]:
+with st.container():
     st.markdown('#### Total Deal Value')
 
-    choropleth = make_choropleth(df_selected_year, 'Country', 'Deal Value (USD Millions)', selected_color_theme)
+    choropleth = make_choropleth(df_reshaped, 'Country', 'Deal Making(USD)', selected_color_theme)
     st.plotly_chart(choropleth, use_container_width=True)
 
-    heatmap = make_heatmap(df_reshaped, 'Year', 'Country', 'Deal Value (USD Millions)', selected_color_theme)
+    # Heatmap function
+    def make_heatmap(input_df, input_y, input_x, input_color, input_color_theme):
+        heatmap = alt.Chart(input_df).mark_rect().encode(
+                y=alt.Y(f'{input_y}:O', axis=alt.Axis(title="Year", titleFontSize=18, titlePadding=15, titleFontWeight=900, labelAngle=0)),
+                x=alt.X(f'{input_x}:O', axis=alt.Axis(title="Country", titleFontSize=18, titlePadding=15, titleFontWeight=900)),
+                color=alt.Color(f'{input_color}:Q',
+                                 legend=None,
+                                 scale=alt.Scale(scheme=input_color_theme)),
+                stroke=alt.value('black'),
+                strokeWidth=alt.value(0.25),
+            ).properties(width=900).configure_axis(
+            labelFontSize=12,
+            titleFontSize=12
+            ) 
+        return heatmap
+
+    heatmap = make_heatmap(df_reshaped, 'Year', 'Country', 'Deal Making(USD)', selected_color_theme)
     st.altair_chart(heatmap, use_container_width=True)
 
-with col[2]:
+with st.container():
     st.markdown('#### Top Sectors')
-    
-    sector_group = df_selected_year.groupby('Sector').sum().reset_index().sort_values('Deal Value (USD Millions)', ascending=False)
-    st.dataframe(sector_group[['Sector', 'Deal Value (USD Millions)', 'Number']])
+
+    # Group by 'Country' or any other feature relevant to your data
+    country_group = df_reshaped.groupby('Country').sum().reset_index().sort_values('Deal Making(USD)', ascending=False)
+    st.dataframe(country_group[['Country', 'Deal Making(USD)', 'GDP']])  

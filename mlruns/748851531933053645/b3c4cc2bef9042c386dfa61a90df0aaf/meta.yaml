@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/748851531933053645/b3c4cc2bef9042c386dfa61a90df0aaf/artifacts
+end_time: 1727087191716
+entry_point_name: ''
+experiment_id: '748851531933053645'
+lifecycle_stage: active
+run_id: b3c4cc2bef9042c386dfa61a90df0aaf
+run_name: thundering-goat-487
+run_uuid: b3c4cc2bef9042c386dfa61a90df0aaf
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1727087191306
+status: 3
+tags: []
+user_id: brian kimu

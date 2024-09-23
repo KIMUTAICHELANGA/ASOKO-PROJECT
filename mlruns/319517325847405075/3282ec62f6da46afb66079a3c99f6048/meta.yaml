@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/319517325847405075/3282ec62f6da46afb66079a3c99f6048/artifacts
+end_time: 1727087188805
+entry_point_name: ''
+experiment_id: '319517325847405075'
+lifecycle_stage: active
+run_id: 3282ec62f6da46afb66079a3c99f6048
+run_name: blushing-calf-480
+run_uuid: 3282ec62f6da46afb66079a3c99f6048
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1727087188645
+status: 3
+tags: []
+user_id: brian kimu

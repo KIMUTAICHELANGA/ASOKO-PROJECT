@@ -70,7 +70,7 @@ if st.sidebar.button('Submit'):
 st.title("Baseline Features for Deal-Making")
 
 # Load the dataset to display features
-baseline_file_path = os.path.join(data_folder, 'africa_deal_data.csv')
+baseline_file_path = os.path.join(data_folder, 'modeldata.csv')
 if os.path.exists(baseline_file_path):
     baseline_data = load_data(baseline_file_path)
 else:
@@ -79,18 +79,17 @@ else:
 # Display a brief description of the baseline features
 st.subheader("Baseline Features and Target Variable")
 st.write("""
-The dataset `africa_deal_data.csv` includes the following baseline features used to predict deal value:
+The dataset `modeldata.csv` includes the following baseline features used to predict deal value:
 
-- **Political Stability**: Measures the stability of a country's political environment.
-- **Economic Environment**: Represents the economic conditions within a country.
-- **Regulatory Framework**: Indicates the regulatory environment affecting businesses.
-- **Infrastructure**: Reflects the quality and extent of a country's infrastructure.
-- **Human Capital**: Measures the skills and abilities of the workforce.
+- **CPI**: Measures the perception of corruption in a country. Higher CPI values indicate less corruption, which is often associated with a more favorable investment environment.
+- **Exports**: Represents the total value of goods and services sold abroad. A higher export value indicates a strong international trade presence, which can boost deal-making activities.
+- **GDP**: The total value of goods and services produced in a country. A higher GDP reflects a larger economy, which can influence the volume and value of deals.
+- **Per_Capita**: The GDP divided by the population. This measure helps understand the economic conditions on a per-person basis, influencing individual and business investment decisions.
+- **FDI_net**: Net foreign direct investment. High levels of FDI suggest that foreign investors are interested in the country’s economic prospects, which can correlate with higher deal-making activities.
+- **Inflation**: The rate at which the general level of prices for goods and services is rising. Moderate inflation rates are generally preferred as high inflation can create uncertainty in investment decisions.
+- **Political_Stability**: Indicates the likelihood of political unrest. Greater political stability can lead to a more predictable investment environment, encouraging deal-making.
 
-The target variable is:
-- **Deal Value (USD Millions)**: The monetary value of the deals.
-
-These features are selected as they are crucial for understanding the investment climate and making accurate predictions about deal values in different countries.
+These features have been selected because they offer a comprehensive view of the economic and political environment in a country, which are critical factors in determining deal-making activities.
 """)
 
 # Optionally display a sample of the baseline dataset

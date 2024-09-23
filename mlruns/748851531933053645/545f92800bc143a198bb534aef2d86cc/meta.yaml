@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/748851531933053645/545f92800bc143a198bb534aef2d86cc/artifacts
+end_time: 1727087727333
+entry_point_name: ''
+experiment_id: '748851531933053645'
+lifecycle_stage: active
+run_id: 545f92800bc143a198bb534aef2d86cc
+run_name: skittish-rat-12
+run_uuid: 545f92800bc143a198bb534aef2d86cc
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1727087722956
+status: 3
+tags: []
+user_id: brian kimu

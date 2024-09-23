@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/319517325847405075/e7bef385b6b349958511419744a4c08d/artifacts
+end_time: 1727088277979
+entry_point_name: ''
+experiment_id: '319517325847405075'
+lifecycle_stage: active
+run_id: e7bef385b6b349958511419744a4c08d
+run_name: fortunate-slug-264
+run_uuid: e7bef385b6b349958511419744a4c08d
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1727088275437
+status: 3
+tags: []
+user_id: brian kimu
