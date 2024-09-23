@@ -2,8 +2,8 @@ import os
 import streamlit as st
 import pandas as pd
 import time
-from evidently.dashboard import Dashboard
-from evidently.tabs import DataDriftTab, RegressionPerformanceTab, DataQualityTab
+from evidently.report import Report
+from evidently.preset import DataDriftPreset, RegressionPerformancePreset, DataQualityPreset
 
 class MarketSizeMonitoringController:
     def __init__(self):
@@ -55,11 +55,12 @@ class MarketSizeMonitoringController:
                 st.write("No data available for the selected year range.")
                 return
 
+            # Generate reports based on selections
             if generate_target_drift:
                 st.write("### Target Drift Report")
                 st.write("Generating Target Drift Report...")
                 try:
-                    target_drift_report = self.generate_report(self.reference_data, self.current_data, DataDriftTab())
+                    target_drift_report = self.generate_report(self.reference_data, self.current_data, DataDriftPreset())
                     st.components.v1.html(target_drift_report, height=800, scrolling=True)
                 except Exception as e:
                     st.error(f"Error generating Target Drift Report: {e}")
@@ -68,7 +69,7 @@ class MarketSizeMonitoringController:
                 st.write("### Data Drift Report")
                 st.write("Generating Data Drift Report...")
                 try:
-                    data_drift_report = self.generate_report(self.reference_data, self.current_data, DataDriftTab())
+                    data_drift_report = self.generate_report(self.reference_data, self.current_data, DataDriftPreset())
                     st.components.v1.html(data_drift_report, height=800, scrolling=True)
                 except Exception as e:
                     st.error(f"Error generating Data Drift Report: {e}")
@@ -77,7 +78,7 @@ class MarketSizeMonitoringController:
                 st.write("### Data Quality Report")
                 st.write("Generating Data Quality Report...")
                 try:
-                    data_quality_report = self.generate_report(self.reference_data, self.current_data, DataQualityTab())
+                    data_quality_report = self.generate_report(self.reference_data, self.current_data, DataQualityPreset())
                     st.components.v1.html(data_quality_report, height=800, scrolling=True)
                 except Exception as e:
                     st.error(f"Error generating Data Quality Report: {e}")
@@ -119,8 +120,6 @@ class MarketSizeMonitoringController:
             st.write(f"- Mean Squared Error (MSE): {mse:.2f}")
             st.write(f"- Root Mean Squared Error (RMSE): {rmse:.2f}")
 
-            
-
             # After showing results, display the model explanation
             st.subheader("Model Explanation")
             st.write(f"Fetching explanation for {selected_model} model...")
@@ -138,7 +137,7 @@ class MarketSizeMonitoringController:
                 st.write("ARIMA is a time-series forecasting method that combines autoregressive and moving average components.")
                 st.write("Residual analysis is performed to check for patterns in the forecast errors.")
 
-    def generate_report(self, reference_data, current_data, tab):
+    def generate_report(self, reference_data, current_data, preset):
         # Ensure the data contains 'target' and 'prediction' columns
         if 'target' not in reference_data.columns or 'prediction' not in reference_data.columns:
             raise ValueError("The reference_data must contain 'target' and 'prediction' columns.")
@@ -150,15 +149,15 @@ class MarketSizeMonitoringController:
         if reference_data.empty or current_data.empty:
             raise ValueError("One or both datasets are empty.")
 
-        column_mapping = {}  # Define your column mapping if needed
-        dashboard = Dashboard(tabs=[tab])
-        dashboard.calculate(reference_data, current_data, column_mapping=column_mapping)
-        
-        # Save the report to an HTML file with UTF-8 encoding
+        # Create a report with the specified preset
+        report = Report(metrics=[preset])
+        report.run(reference_data=reference_data, current_data=current_data)
+
+        # Save the report to an HTML file
         report_path = "report.html"
-        dashboard.save(report_path)
-        
-        # Read the HTML content with UTF-8 encoding
+        report.save(report_path)
+
+        # Read the HTML content
         try:
             with open(report_path, "r", encoding="utf-8") as file:
                 return file.read()
