@@ -3,7 +3,7 @@ import streamlit as st
 import pandas as pd
 import time
 from evidently.report import Report
-from evidently.metrics import DataDriftMetric, RegressionPerformanceMetric, DataQualityMetric
+from evidently.metric import DatasetDriftMetric, DatasetQualityMetric, RegressionQualityMetric  # Updated imports
 
 class MarketSizeMonitoringController:
     def __init__(self):
@@ -29,6 +29,7 @@ class MarketSizeMonitoringController:
         generate_target_drift = st.checkbox("Generate Target Drift Report")
         generate_data_drift = st.checkbox("Generate Data Drift Report")
         generate_data_quality = st.checkbox("Generate Data Quality Report")
+        generate_regression_quality = st.checkbox("Generate Regression Quality Report")  # New checkbox
 
         # Submit button for fetching data and filtering by year
         if st.button("Submit"):
@@ -60,7 +61,7 @@ class MarketSizeMonitoringController:
                 st.write("### Target Drift Report")
                 st.write("Generating Target Drift Report...")
                 try:
-                    target_drift_report = self.generate_target_drift_report(self.reference_data, self.current_data)
+                    target_drift_report = self.generate_report(self.reference_data, self.current_data, DatasetDriftMetric())
                     st.components.v1.html(target_drift_report, height=800, scrolling=True)
                 except Exception as e:
                     st.error(f"Error generating Target Drift Report: {e}")
@@ -69,7 +70,7 @@ class MarketSizeMonitoringController:
                 st.write("### Data Drift Report")
                 st.write("Generating Data Drift Report...")
                 try:
-                    data_drift_report = self.generate_data_drift_report(self.reference_data, self.current_data)
+                    data_drift_report = self.generate_report(self.reference_data, self.current_data, DatasetDriftMetric())
                     st.components.v1.html(data_drift_report, height=800, scrolling=True)
                 except Exception as e:
                     st.error(f"Error generating Data Drift Report: {e}")
@@ -78,10 +79,19 @@ class MarketSizeMonitoringController:
                 st.write("### Data Quality Report")
                 st.write("Generating Data Quality Report...")
                 try:
-                    data_quality_report = self.generate_data_quality_report(self.reference_data, self.current_data)
+                    data_quality_report = self.generate_report(self.reference_data, self.current_data, DatasetQualityMetric())
                     st.components.v1.html(data_quality_report, height=800, scrolling=True)
                 except Exception as e:
                     st.error(f"Error generating Data Quality Report: {e}")
+
+            if generate_regression_quality:  # New regression quality report generation
+                st.write("### Regression Quality Report")
+                st.write("Generating Regression Quality Report...")
+                try:
+                    regression_quality_report = self.generate_report(self.reference_data, self.current_data, RegressionQualityMetric())
+                    st.components.v1.html(regression_quality_report, height=800, scrolling=True)
+                except Exception as e:
+                    st.error(f"Error generating Regression Quality Report: {e}")
 
         # Dropdown to choose a model
         st.subheader("Choose Model for Performance Report")
@@ -137,43 +147,26 @@ class MarketSizeMonitoringController:
                 st.write("ARIMA is a time-series forecasting method that combines autoregressive and moving average components.")
                 st.write("Residual analysis is performed to check for patterns in the forecast errors.")
 
-    def generate_target_drift_report(self, reference_data, current_data):
-        # Create a report for target drift
-        report = Report(metrics=[DataDriftMetric(), RegressionPerformanceMetric()])
+    def generate_report(self, reference_data, current_data, metric):
+        # Ensure the data contains 'target' and 'prediction' columns
+        if 'target' not in reference_data.columns or 'prediction' not in reference_data.columns:
+            raise ValueError("The reference_data must contain 'target' and 'prediction' columns.")
+        
+        if 'target' not in current_data.columns or 'prediction' not in current_data.columns:
+            raise ValueError("The current_data must contain 'target' and 'prediction' columns.")
+        
+        # Check for empty data
+        if reference_data.empty or current_data.empty:
+            raise ValueError("One or both datasets are empty.")
+
+        # Create a report with the specified metric
+        report = Report(metrics=[metric])
         report.run(reference_data=reference_data, current_data=current_data)
 
         # Save the report to an HTML file
-        report_path = "target_drift_report.html"
+        report_path = "report.html"
         report.save(report_path)
 
-        # Read the HTML content
-        return self.read_html(report_path)
-
-    def generate_data_drift_report(self, reference_data, current_data):
-        # Create a report for data drift
-        report = Report(metrics=[DataDriftMetric()])
-        report.run(reference_data=reference_data, current_data=current_data)
-
-        # Save the report to an HTML file
-        report_path = "data_drift_report.html"
-        report.save(report_path)
-
-        # Read the HTML content
-        return self.read_html(report_path)
-
-    def generate_data_quality_report(self, reference_data, current_data):
-        # Create a report for data quality
-        report = Report(metrics=[DataQualityMetric()])
-        report.run(reference_data=reference_data, current_data=current_data)
-
-        # Save the report to an HTML file
-        report_path = "data_quality_report.html"
-        report.save(report_path)
-
-        # Read the HTML content
-        return self.read_html(report_path)
-
-    def read_html(self, report_path):
         # Read the HTML content
         try:
             with open(report_path, "r", encoding="utf-8") as file:
