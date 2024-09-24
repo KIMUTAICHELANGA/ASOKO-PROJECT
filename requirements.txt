@@ -11,4 +11,4 @@ evidently==0.2.8
 statsmodels
 shap
 Pillow
-
+numpy==1.26.4
