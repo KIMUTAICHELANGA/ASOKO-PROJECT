@@ -3,7 +3,7 @@ import streamlit as st
 import pandas as pd
 import time
 from evidently.report import Report
-from evidently.metric import DatasetDriftMetric, DatasetQualityMetric, RegressionQualityMetric  # Updated imports
+from evidently.metrics import ColumnDriftMetric, ColumnSummaryMetric, DatasetQualityMetric, RegressionQualityMetric  # Updated imports
 
 class MarketSizeMonitoringController:
     def __init__(self):
@@ -26,10 +26,10 @@ class MarketSizeMonitoringController:
         end_year = st.sidebar.slider("End Year", min_value=2018, max_value=2023, value=2023)
 
         st.subheader("Select Reports to Generate")
-        generate_target_drift = st.checkbox("Generate Target Drift Report")
-        generate_data_drift = st.checkbox("Generate Data Drift Report")
+        generate_column_drift = st.checkbox("Generate Column Drift Report")
+        generate_column_summary = st.checkbox("Generate Column Summary Report")  # New checkbox for column summary
         generate_data_quality = st.checkbox("Generate Data Quality Report")
-        generate_regression_quality = st.checkbox("Generate Regression Quality Report")  # New checkbox
+        generate_regression_quality = st.checkbox("Generate Regression Quality Report")  # New checkbox for regression quality
 
         # Submit button for fetching data and filtering by year
         if st.button("Submit"):
@@ -57,23 +57,23 @@ class MarketSizeMonitoringController:
                 return
 
             # Generate reports based on selections
-            if generate_target_drift:
-                st.write("### Target Drift Report")
-                st.write("Generating Target Drift Report...")
+            if generate_column_drift:
+                st.write("### Column Drift Report")
+                st.write("Generating Column Drift Report...")
                 try:
-                    target_drift_report = self.generate_report(self.reference_data, self.current_data, DatasetDriftMetric())
-                    st.components.v1.html(target_drift_report, height=800, scrolling=True)
+                    column_drift_report = self.generate_report(self.reference_data, self.current_data, ColumnDriftMetric())
+                    st.components.v1.html(column_drift_report, height=800, scrolling=True)
                 except Exception as e:
-                    st.error(f"Error generating Target Drift Report: {e}")
+                    st.error(f"Error generating Column Drift Report: {e}")
 
-            if generate_data_drift:
-                st.write("### Data Drift Report")
-                st.write("Generating Data Drift Report...")
+            if generate_column_summary:
+                st.write("### Column Summary Report")
+                st.write("Generating Column Summary Report...")
                 try:
-                    data_drift_report = self.generate_report(self.reference_data, self.current_data, DatasetDriftMetric())
-                    st.components.v1.html(data_drift_report, height=800, scrolling=True)
+                    column_summary_report = self.generate_report(self.reference_data, self.current_data, ColumnSummaryMetric())
+                    st.components.v1.html(column_summary_report, height=800, scrolling=True)
                 except Exception as e:
-                    st.error(f"Error generating Data Drift Report: {e}")
+                    st.error(f"Error generating Column Summary Report: {e}")
 
             if generate_data_quality:
                 st.write("### Data Quality Report")
