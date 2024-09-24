@@ -3,7 +3,7 @@ import streamlit as st
 import pandas as pd
 import time
 from evidently.report import Report
-from evidently.metrics import ColumnDriftMetric, ColumnSummaryMetric, DatasetQualityMetric, RegressionQualityMetric  # Updated imports
+from evidently.metrics import ColumnDriftMetric, ColumnSummaryMetric, RegressionQualityMetric  # Removed DatasetQualityMetric
 
 class MarketSizeMonitoringController:
     def __init__(self):
@@ -28,7 +28,6 @@ class MarketSizeMonitoringController:
         st.subheader("Select Reports to Generate")
         generate_column_drift = st.checkbox("Generate Column Drift Report")
         generate_column_summary = st.checkbox("Generate Column Summary Report")  # New checkbox for column summary
-        generate_data_quality = st.checkbox("Generate Data Quality Report")
         generate_regression_quality = st.checkbox("Generate Regression Quality Report")  # New checkbox for regression quality
 
         # Submit button for fetching data and filtering by year
@@ -74,15 +73,6 @@ class MarketSizeMonitoringController:
                     st.components.v1.html(column_summary_report, height=800, scrolling=True)
                 except Exception as e:
                     st.error(f"Error generating Column Summary Report: {e}")
-
-            if generate_data_quality:
-                st.write("### Data Quality Report")
-                st.write("Generating Data Quality Report...")
-                try:
-                    data_quality_report = self.generate_report(self.reference_data, self.current_data, DatasetQualityMetric())
-                    st.components.v1.html(data_quality_report, height=800, scrolling=True)
-                except Exception as e:
-                    st.error(f"Error generating Data Quality Report: {e}")
 
             if generate_regression_quality:  # New regression quality report generation
                 st.write("### Regression Quality Report")
