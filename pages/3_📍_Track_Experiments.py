@@ -4,11 +4,9 @@ import pandas as pd
 import pickle
 import plotly.express as px
 import matplotlib.pyplot as plt
-import os
 
 # Set up MLflow tracking URI to the ngrok public URL from Colab
-# Replace this URL with the ngrok public URL shown in Colab output
-mlflow.set_tracking_uri("YOUR_NGROK_PUBLIC_URL")
+mlflow.set_tracking_uri("https://32c1-34-44-51-184.ngrok-free.app")  # Updated with your actual ngrok URL
 
 # Create or get experiments for each model
 experiment_names = ['Arima Experiment', 'Gradient Boosting Experiment', 'Linear Regression Experiment']
