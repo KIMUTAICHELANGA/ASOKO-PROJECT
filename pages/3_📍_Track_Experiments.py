@@ -3,11 +3,12 @@ import mlflow
 import pandas as pd
 import pickle
 import plotly.express as px
-import matplotlib.pyplot as plt  # Import matplotlib for plotting
+import matplotlib.pyplot as plt
 import os
 
-# Set up MLflow tracking URI to point to the local UI
-mlflow.set_tracking_uri("http://127.0.0.1:5000")
+# Set up MLflow tracking URI to the ngrok public URL from Colab
+# Replace this URL with the ngrok public URL shown in Colab output
+mlflow.set_tracking_uri("YOUR_NGROK_PUBLIC_URL")
 
 # Create or get experiments for each model
 experiment_names = ['Arima Experiment', 'Gradient Boosting Experiment', 'Linear Regression Experiment']
@@ -42,6 +43,7 @@ for model_name, file_path in model_files.items():
 # Main page options
 st.title("Model Experiment Dashboard")
 
+# Select the experiment
 selected_experiment_name = st.selectbox("Select an Experiment", experiment_names)
 
 # Fetch runs for the selected experiment
