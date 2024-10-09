@@ -152,5 +152,39 @@ def main():
             st.write(f"**Mean Squared Error (MSE):** {MSE:.2f}")
             st.write(f"**Root Mean Squared Error (RMSE):** {RMSE:.2f}")
 
+    # Sidebar Data Sources Section
+    st.sidebar.header("Data Sources")
+    data_sources = ['Source 1', 'Source 2', 'Source 3']  # Replace with actual data sources
+    selected_source = st.sidebar.selectbox('Select Data Source', data_sources)
+
+    if st.sidebar.button('Explore'):
+        st.sidebar.write(f"You have selected: {selected_source}.")  # You can replace this with actual exploration logic.
+
+    # Add a wider button for Baseline Metrics using HTML and CSS
+    st.sidebar.markdown(
+    """
+    <style>
+    .big-button {
+        display: inline-block;
+        padding: 15px 30px;  /* Increased padding for a wider button */
+        margin-top: 20px;
+        font-size: 18px;  /* Increased font size */
+        font-weight: bold;
+        color: white !important;  /* Ensure the text is white */
+        background-color: #28a745;  /* Green background */
+        border-radius: 5px;
+        text-align: center;
+        text-decoration: none;  /* Remove underlining */
+    }
+    .big-button:hover {
+        background-color: #218838;  /* Darker green on hover */
+    }
+    </style>
+    <a class="big-button" href="#" onclick="alert('Baseline Metrics clicked!');">Baseline Metrics</a>
+    """,
+    unsafe_allow_html=True
+)
+
+
 if __name__ == "__main__":
     main()

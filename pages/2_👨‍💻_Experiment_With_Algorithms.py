@@ -197,6 +197,11 @@ def sidebar_menu():
         st.sidebar.success("MLflow Server is Live! http://localhost:5000")
         st.sidebar.markdown("[Open MLflow](http://localhost:5000)", unsafe_allow_html=True)
 
+    # Button for visualizing model performances
+    if st.sidebar.button("Visualize Model Performances"):
+        st.sidebar.success("Visualizing model performances...")  # Placeholder for future functionality
+        # You can add your visualization logic here
+
 if __name__ == '__main__':
     sidebar_menu()
     main()

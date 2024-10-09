@@ -60,12 +60,15 @@ st.markdown("""
 data_folder = 'data'
 csv_files = [file for file in os.listdir(data_folder) if file.endswith('.csv')]
 
-# Load the first CSV file by default
-df_reshaped = pd.read_csv(os.path.join(data_folder, csv_files[0]))
+# Sidebar for selecting data source
+st.sidebar.header('Settings')
+selected_data_source = st.sidebar.selectbox('Select a data source', csv_files)
+
+# Load the selected CSV file
+df_reshaped = pd.read_csv(os.path.join(data_folder, selected_data_source))
 
 #######################
 # Sidebar for selecting color theme
-st.sidebar.header('Settings')
 color_theme_list = ['blues', 'greens', 'reds', 'rainbow', 'turbo', 'viridis']
 selected_color_theme = st.sidebar.selectbox('Select a color theme', color_theme_list)
 
@@ -147,4 +150,4 @@ with st.container():
 
     # Group by 'Country' or any other feature relevant to your data
     country_group = df_reshaped.groupby('Country').sum().reset_index().sort_values('Deal Making(USD)', ascending=False)
-    st.dataframe(country_group[['Country', 'Deal Making(USD)', 'GDP']])  
+    st.dataframe(country_group[['Country', 'Deal Making(USD)', 'GDP']])
