@@ -1,7 +1,8 @@
-from langchain.document_loaders import PyPDFLoader, DirectoryLoader, PDFMinerLoader 
-from langchain.text_splitter import RecursiveCharacterTextSplitter 
-from langchain.embeddings import SentenceTransformerEmbeddings 
-from langchain.vectorstores import Chroma 
+from langchain_community.text_splitter import RecursiveCharacterTextSplitter 
+from langchain_community.document_loaders import PyPDFLoader, DirectoryLoader, PDFMinerLoader
+from langchain_community.embeddings import SentenceTransformerEmbeddings
+from langchain_community.vectorstores import Chroma
+
 import os 
 from constants import CHROMA_SETTINGS
 
